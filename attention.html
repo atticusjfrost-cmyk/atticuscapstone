@@ -52,13 +52,13 @@
         
         @keyframes flashRed {
             0%, 100% { background-color: #1a1a1a; }
-            50% { background-color: #ff0000; }
+            50% { background-color: #ff000000; }
         }
         
         #errorImage {
             display: none;
             position: fixed;
-            top: 50%;
+            top: 53%;
             left: 50%;
             transform: translate(-50%, -50%);
             max-width: 90%;
@@ -75,8 +75,10 @@
     <div id="display"></div>
     <button id="nextButton">Next Memory</button>
     <img id="errorImage" src="newerrorbow.png" alt="Error">
+     <audio id="errorSound" src="errorbox.mp3"></audio>
 
     <script>
+        
         const text = `EXT. HOUSE - DAY 
 We see ME, dressed in old and dirtied clothes. ME holds the door up to the door frame and holds it there for a beat. ME squints and lowers the door onto the ground before taking measurements of both door and doorframe.
                                 ME
@@ -120,6 +122,59 @@ Me puts the plank down.`;
         });
         
         const intervalId = setInterval(displayNextWord, SPEED);
+        const errorSound = document.getElementById('errorSound');
+
+// Create the additional button
+const extraButton = document.createElement('button');
+
+extraButton.style.display = 'none';
+extraButton.style.margin = '5px auto'
+extraButton.style.padding = '15px 40px';
+extraButton.style.fontSize = '18px';
+extraButton.style.fontFamily = 'Courier New, monospace';
+extraButton.style.backgroundColor = '#e94e77';
+extraButton.style.color = 'white';
+extraButton.style.border = 'none';
+extraButton.style.borderRadius = '8px';
+extraButton.style.cursor = 'pointer';
+extraButton.style.transition = 'background-color 0.3s';
+extraButton.style.position = 'relative';
+extraButton.style.zIndex = '1001';
+extraButton.style.top = '4%';
+
+extraButton.addEventListener('mouseover', () => {
+    extraButton.style.backgroundColor = '#c43c61';
+});
+
+extraButton.addEventListener('mouseout', () => {
+    extraButton.style.backgroundColor = '#e94e77';
+});
+
+extraButton.addEventListener('click', () => {
+    alert('Continuing...');
+});
+
+document.body.appendChild(extraButton);
+
+// Modify nextButton click handler
+nextButton.addEventListener('click', () => {
+    document.body.classList.add('flash');
+
+    setTimeout(() => {
+        errorImage.classList.add('show');
+        errorSound.play(); // 🔊 Play sound when image appears
+        extraButton.style.display = 'block'; // 👀 Show extra button
+    }, 250);
+
+    setTimeout(() => {
+        document.body.classList.remove('flash');
+    }, 500);
+});
+
+// Optional: allow clicking the image to replay sound
+errorImage.addEventListener('click', () => {
+    errorSound.play();
+});
     </script>
 </body>
 </html>
