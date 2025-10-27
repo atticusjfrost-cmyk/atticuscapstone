@@ -13,7 +13,7 @@
             background-color: #1a1a1a;
             color: #e0e0e0;
         }
-        
+
         #display {
             min-height: 300px;
             padding: 30px;
@@ -23,7 +23,7 @@
             line-height: 1.8;
             white-space: pre-wrap;
         }
-        
+
         #nextButton {
             display: none;
             margin: 30px auto;
@@ -37,24 +37,24 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        
+
         #nextButton:hover {
             background-color: #357abd;
         }
-        
+
         #nextButton.show {
             display: block;
         }
-        
+
         .flash {
             animation: flashRed 0.5s;
         }
-        
+
         @keyframes flashRed {
             0%, 100% { background-color: #1a1a1a; }
             50% { background-color: #ff000000; }
         }
-        
+
         #errorImage {
             display: none;
             position: fixed;
@@ -65,9 +65,31 @@
             max-height: 90%;
             z-index: 1000;
         }
-        
+
         #errorImage.show {
             display: block;
+        }
+
+        #extraButton {
+            display: none;
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 40px;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            background-color: #e94e7700;
+            color: rgba(255, 255, 255, 0);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1001;
+        }
+
+        #extraButton:hover {
+            background-color: #c43c6000;
         }
     </style>
 </head>
@@ -75,106 +97,59 @@
     <div id="display"></div>
     <button id="nextButton">Next Memory</button>
     <img id="errorImage" src="newerrorbow.png" alt="Error">
-     <audio id="errorSound" src="errorbox.mp3"></audio>
+    <button id="extraButton">Continue</button>
+    <audio id="errorSound" src="errorbox.mp3"></audio>
 
     <script>
-        
         const text = `EXT. HOUSE - DAY 
 We see ME, dressed in old and dirtied clothes. ME holds the door up to the door frame and holds it there for a beat. ME squints and lowers the door onto the ground before taking measurements of both door and doorframe.
                                 ME
                         This won't fit.
 Me puts the plank down.`;
 
-        // CHANGE THIS VALUE TO CONTROL SPEED (in milliseconds)
-        const SPEED = 50; // 500ms between each word
-        
+        const SPEED = 50;
         const words = text.split(/(\s+)/);
         let currentIndex = 0;
-        
+
         const display = document.getElementById('display');
         const nextButton = document.getElementById('nextButton');
         const errorImage = document.getElementById('errorImage');
-        
+        const errorSound = document.getElementById('errorSound');
+        const extraButton = document.getElementById('extraButton');
+
         function displayNextWord() {
             if (currentIndex < words.length) {
                 display.textContent += words[currentIndex];
                 currentIndex++;
             } else {
                 clearInterval(intervalId);
-                // Show the Next Memory button after all words are displayed
                 nextButton.classList.add('show');
             }
         }
-        
+
+        const intervalId = setInterval(displayNextWord, SPEED);
+
         nextButton.addEventListener('click', () => {
-            // Flash red
             document.body.classList.add('flash');
-            
-            // Show error image after flash starts
+
             setTimeout(() => {
                 errorImage.classList.add('show');
+                errorSound.play();
+                extraButton.style.display = 'block';
             }, 250);
-            
-            // Remove flash animation class after it completes
+
             setTimeout(() => {
                 document.body.classList.remove('flash');
             }, 500);
         });
-        
-        const intervalId = setInterval(displayNextWord, SPEED);
-        const errorSound = document.getElementById('errorSound');
 
-// Create the additional button
-const extraButton = document.createElement('button');
+        errorImage.addEventListener('click', () => {
+            errorSound.play();
+        });
 
-extraButton.style.display = 'none';
-extraButton.style.margin = '5px auto'
-extraButton.style.padding = '15px 40px';
-extraButton.style.fontSize = '18px';
-extraButton.style.fontFamily = 'Courier New, monospace';
-extraButton.style.backgroundColor = '#e94e77';
-extraButton.style.color = 'white';
-extraButton.style.border = 'none';
-extraButton.style.borderRadius = '8px';
-extraButton.style.cursor = 'pointer';
-extraButton.style.transition = 'background-color 0.3s';
-extraButton.style.position = 'relative';
-extraButton.style.zIndex = '1001';
-extraButton.style.top = '4%';
-
-extraButton.addEventListener('mouseover', () => {
-    extraButton.style.backgroundColor = '#c43c61';
-});
-
-extraButton.addEventListener('mouseout', () => {
-    extraButton.style.backgroundColor = '#e94e77';
-});
-
-extraButton.addEventListener('click', () => {
-    alert('Continuing...');
-});
-
-document.body.appendChild(extraButton);
-
-// Modify nextButton click handler
-nextButton.addEventListener('click', () => {
-    document.body.classList.add('flash');
-
-    setTimeout(() => {
-        errorImage.classList.add('show');
-        errorSound.play(); // 
-        extraButton.style.display = 'block'; // 
-    }, 250);
-
-    setTimeout(() => {
-        document.body.classList.remove('flash');
-    }, 500);
-});
-
-// Optional: allow clicking the image to replay sound
-errorImage.addEventListener('click', () => {
-    errorSound.play();
-});
+        extraButton.addEventListener('click', () => {
+            window.location.href = 'attention2.html';
+        });
     </script>
 </body>
 </html>
