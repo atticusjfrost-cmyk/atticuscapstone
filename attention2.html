@@ -70,28 +70,6 @@
       display: block;
     }
 
-    #extraButton {
-      display: none;
-      position: fixed;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 15px 40px;
-      font-size: 18px;
-      font-family: 'Courier New', monospace;
-      background-color: #e94e7700;
-      color: rgba(255, 255, 255, 0);
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      z-index: 1001;
-    }
-
-    #extraButton:hover {
-      background-color: #c43c6000;
-    }
-
     #dramaticText {
       display: none;
       position: fixed;
@@ -114,14 +92,43 @@
       75% { transform: translate(-50%, -50%) rotate(1deg); }
       100% { transform: translate(-50%, -50%) rotate(0deg); }
     }
+
+    #dialogue {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      z-index: 2001;
+      white-space: pre-wrap;
+    }
+
+    .whiteText {
+      color: white;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-style: bold;
+            font-size: 50px;
+
+    }
+
+    .redText {
+      color: #ff4c4c;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-style: bold;
+            font-size: 50px;
+
+    }
   </style>
 </head>
 <body>
   <div id="display"></div>
   <div id="dramaticText">No! It didn't go like this. How did it go?...</div>
+  <div id="dialogue"></div>
   <button id="nextButton">Next Memory</button>
-  <img id="errorImage" src="newerrorbow.png" alt="Error" />
-  <button id="extraButton">Continue</button>
+
   <audio id="errorSound" src="errorbox.mp3"></audio>
 
   <script>
@@ -140,8 +147,8 @@ This won’t fit; I tell myself.`;
     const nextButton = document.getElementById('nextButton');
     const errorImage = document.getElementById('errorImage');
     const errorSound = document.getElementById('errorSound');
-    const extraButton = document.getElementById('extraButton');
     const dramaticText = document.getElementById('dramaticText');
+    const dialogue = document.getElementById('dialogue');
 
     function displayNextWord() {
       if (currentIndex < words.length) {
@@ -157,28 +164,51 @@ This won’t fit; I tell myself.`;
 
     nextButton.addEventListener('click', () => {
       document.body.classList.add('flash');
-
-      // Clear the original text and show dramatic message
       display.textContent = '';
       dramaticText.style.display = 'block';
+      nextButton.style.display = 'none';
 
       setTimeout(() => {
         errorImage.classList.add('show');
         errorSound.play();
-        extraButton.style.display = 'block';
       }, 250);
 
       setTimeout(() => {
         document.body.classList.remove('flash');
       }, 500);
+
+      // Start dialogue sequence
+    
+      setTimeout(() => {
+  dramaticText.style.display = 'none';
+  showDialogue("It’s just a matter of paying attention.", "white");
+}, 2000);
+      setTimeout(() => showDialogue("What?", "red"), 4000);
+      setTimeout(() => showDialogue("You must pay attention.", "white"), 6000);
+      setTimeout(() => showDialogue("I have been. The memory file must be wrong. None of these are how it happened.", "red"), 8000);
+      setTimeout(() => showDialogue("You just aren’t paying enough attention.", "white"), 11000);
+      setTimeout(() => showDialogue("...to what?", "red"), 14000);
+      setTimeout(() => showDialogue("To the parts that don't fit.", "white"), 17000);
+      setTimeout(() => showDialogue("Change is a horse we all must ride.", "white"), 20000);
+      setTimeout(() => showDialogue("Oh... OK.", "red"), 23000);
+      setTimeout(() => {
+  window.location.href = 'autumnjogger.html';
+}, 27000); // 23000 + 4000ms pause
     });
+
+    function showDialogue(text, color) {
+      dialogue.textContent = text;
+      dialogue.className = '';
+      dialogue.classList.add('whiteText');
+      if (color === 'red') {
+        dialogue.classList.remove('whiteText');
+        dialogue.classList.add('redText');
+      }
+      dialogue.style.display = 'block';
+    }
 
     errorImage.addEventListener('click', () => {
       errorSound.play();
-    });
-
-    extraButton.addEventListener('click', () => {
-      window.location.href = 'autumnjogger.html';
     });
   </script>
 </body>

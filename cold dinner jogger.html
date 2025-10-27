@@ -1,91 +1,127 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-image: url('colddinnerjogger.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('colddinnerjogger.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+    }
 
-        body.hover-active {
-            background-image: url('colddinnerjogger2.png');
-        }
+    body.hover-active {
+      background-image: url('colddinnerjogger2.png');
+    }
 
-        #backgroundGif {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
+    #notification, #confirm1, #confirm2, #finalMessage {
+      position: fixed;
+      width: 300px;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      font-size: 14px;
+      display: none;
+      z-index: 100;
+    }
 
-        #notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 200px;
-            padding: 15px;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            z-index: 100;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            display: none;
-        }
+    #notification:hover {
+      background-color: #2196F3;
+      cursor: pointer;
+    }
 
-        #notification:hover {
-            background-color: #2196F3;
-        }
-    </style>
+    #confirm1, #confirm2 {
+      background-color: #333;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      background-color: #2196F3;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0b7dda;
+    }
+
+    #notification { top: 580px; right: 600px; }
+    #confirm1 { top: 580px; right: 600px; }
+    #confirm2 { top: 580px; right: 600px; }
+    #finalMessage {
+      top: 580px;
+      right: 600px;
+      background-color: #990000;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div id="notification">
-        Memory Located
-    </div>
 
-    <script>
-        const notification = document.getElementById('notification');
-        const body = document.body;
+  <div id="notification">Memory Located</div>
+  <div id="confirm1">
+    Are you sure you want to view it?<br>
+    <button onclick="showConfirm2()">Yes</button>
+  </div>
+  <div id="confirm2">
+    Are you absolutely sure?<br>
+    <button onclick="showFinal()">Yes</button>
+  </div>
+  <div id="finalMessage">Braindows is not responsible for any emotional damage.</div>
 
-        // Show notification after 4 seconds
-        setTimeout(function() {
-            notification.style.display = 'block';
-        }, 4000);
+  <script>
+    const notification = document.getElementById('notification');
+    const confirm1 = document.getElementById('confirm1');
+    const confirm2 = document.getElementById('confirm2');
+    const finalMessage = document.getElementById('finalMessage');
+    const body = document.body;
 
-        notification.addEventListener('click', function() {
+    // Show notification after 4 seconds
+    setTimeout(() => {
+      notification.style.display = 'block';
+    }, 4000);
 
-             setTimeout(function() {
+    // Hover effect
+    notification.addEventListener('mouseenter', () => {
+      body.classList.add('hover-active');
+    });
+
+    notification.addEventListener('mouseleave', () => {
+      body.classList.remove('hover-active');
+    });
+
+    // On click, show first confirmation
+    notification.addEventListener('click', () => {
+      notification.style.display = 'none';
+      confirm1.style.display = 'block';
+    });
+
+    function showConfirm2() {
+      confirm1.style.display = 'none';
+      confirm2.style.display = 'block';
+    }
+
+    function showFinal() {
+      confirm2.style.display = 'none';
+      finalMessage.style.display = 'block';
+      setTimeout(() => {
         window.location.href = 'cold dinner.html';
-    }, 3000);
-            
-        });
-        
+      }, 3000);
+    }
+  </script>
 
-        // Change background when hovering over notification
-        notification.addEventListener('mouseenter', function() {
-            body.classList.add('hover-active');
-        });
-
-        notification.addEventListener('mouseleave', function() {
-            body.classList.remove('hover-active');
-        });
-
-        // Change notification position here:
-        notification.style.top = '580px';
-        notification.style.right = '600px';
-    </script>
 </body>
 </html>

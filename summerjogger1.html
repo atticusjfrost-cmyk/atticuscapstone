@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Questionnaire</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f0f0;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .question {
+      display: none;
+      margin-bottom: 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .question.active {
+      display: block;
+    }
+    .glitch {
+      color: red;
+      font-style: italic;
+      transition: all 0.3s ease;
+    }
+    #calculating {
+      display: none;
+      font-size: 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Memory Determination Questionnaire</h1>
+
+  <form id="quizForm" onsubmit="handleSubmit(event)">
+    <div class="question active" id="q1">
+      <p><strong>If you could be a shape, what would it be?</strong></p>
+      <label><input type="radio" name="shape" value="Square"> Square</label><br>
+      <label><input type="radio" name="shape" value="Circle"> Circle</label><br>
+      <label><input type="radio" name="shape" value="Conchospiral"> Conchospiral</label><br>
+      <label><input type="radio" name="shape" value="Triangle"> Triangle</label><br><br>
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <div class="question" id="q2">
+      <p><strong>Why did you pick that shape?</strong></p>
+      <label><input type="radio" name="reason" value="Want"> Because it is what I want to be</label><br>
+      <label><input type="radio" name="reason" value="Will"> Because it is what I will be</label><br><br>
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <div class="question" id="q3">
+      <p><strong>A temple in Japan is rebuilt every century with modern building techniques. Has this temple changed, or is it the same?</strong></p>
+      <label><input type="radio" name="temple" value="Changed">
+        <span id="glitchText" class="glitch">It has changed</span>
+      </label><br>
+      <label><input type="radio" name="temple" value="Same"> It hasn’t changed</label><br><br>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <div id="calculating">Calculating...</div>
+
+  <script>
+    let current = 1;
+
+    function nextQuestion() {
+      document.getElementById(`q${current}`).classList.remove('active');
+      current++;
+      const next = document.getElementById(`q${current}`);
+      if (next) {
+        next.classList.add('active');
+        if (current === 3) {
+          setTimeout(() => {
+            const glitch = document.getElementById('glitchText');
+            glitch.textContent = 'It hasn’t changed';
+            glitch.style.color = 'black';
+            glitch.style.fontStyle = 'normal';
+          }, 1500);
+        }
+      }
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      document.getElementById('quizForm').style.display = 'none';
+      document.getElementById('calculating').style.display = 'block';
+      setTimeout(() => {
+        window.location.href = 'summerjogger.html';
+      }, 1500);
+    }
+  </script>
+
+</body>
+</html>

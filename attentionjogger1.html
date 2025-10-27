@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Braindows Scan</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding-top: 100px;
+    }
+    #scan, #thumb, #calculated, #result {
+      transition: opacity 0.5s ease;
+    }
+    img {
+      width: 150px;
+      margin-top: 20px;
+    }
+    #calculated, #result {
+      display: none;
+      font-size: 20px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scan">
+    <p><strong>Place your thumb here so Braindows can analyse the memory most needed.</strong></p>
+    <img id="thumb" src="thumbprint.png" alt="Thumbprint">
+  </div>
+
+  <div id="calculated">
+    <p><strong>Calculated.</strong><br>
+    You need a memory that is </p>
+  </div>
+
+  <div id="result">
+    <p>Thank you! Your next memory has been located.<br>And you are welcome!</p>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('scan').style.opacity = 0;
+      setTimeout(() => {
+        document.getElementById('scan').style.display = 'none';
+        document.getElementById('calculated').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('calculated').style.opacity = 0;
+          setTimeout(() => {
+            document.getElementById('calculated').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            setTimeout(() => {
+              window.location.href = 'attentionjogger.html';
+            }, 2000);
+          }, 500);
+        }, 2000);
+      }, 500);
+    }, 4000);
+  </script>
+
+</body>
+</html>
