@@ -106,18 +106,17 @@
             console.log('Player ready');
         }
 
-        function onPlayerStateChange(event) {
-            // When video ends (state 0)
-            if (event.data === YT.PlayerState.ENDED) {
-                if (document.fullscreenElement) {
-                    document.exitFullscreen();
-                }
-                setTimeout(() => {
-                    nextButton.style.display = 'block';
-                }, 3000);
-            }
+      function onPlayerStateChange(event) {
+    // When video ends (state 0)
+    if (event.data === YT.PlayerState.ENDED) {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
         }
-
+        setTimeout(() => {
+            window.location.href = 'music2jogger.html';
+        }, 3000); // 3-second delay before redirect
+    }
+}
         playBtn.addEventListener('click', async () => {
             try {
                 // Start playing
