@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('summerjogger.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        body.hover-active {
+            background-image: url('summerjogger2.png');
+        }
+
+        #backgroundGif {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        #notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 200px;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 100;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            display: none;
+        }
+
+        #notification:hover {
+            background-color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div id="notification">
+        Memory Located
+    </div>
+
+    <script>
+        const notification = document.getElementById('notification');
+        const body = document.body;
+
+        // Show notification after 4 seconds
+        setTimeout(function() {
+            notification.style.display = 'block';
+        }, 4000);
+
+        notification.addEventListener('click', function() {
+           setTimeout(function() {
+        window.location.href = 'summer.html';
+    }, 3000);
+        });
+
+        // Change background when hovering over notification
+        notification.addEventListener('mouseenter', function() {
+            body.classList.add('hover-active');
+        });
+
+        notification.addEventListener('mouseleave', function() {
+            body.classList.remove('hover-active');
+        });
+
+        // Change notification position here:
+        notification.style.top = '580px';
+        notification.style.right = '700px';
+    </script>
+</body>
+</html>
