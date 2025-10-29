@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Quiz</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f0f0;
+      padding: 30px;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .question {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .question p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+    button {
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: 30px auto 0;
+    }
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Quiz</h1>
+
+  <form id="quizForm">
+    <div class="question">
+      <p>1. What is the process wherein a chemical goes from one form to another known as?</p>
+      <label><input type="radio" name="q1" value="chemical-change" required> Chemical change</label>
+    </div>
+
+    <div class="question">
+      <p>2. To improve is to:</p>
+      <label><input type="radio" name="q2" value="change" required> Change</label>
+    </div>
+
+    <div class="question">
+      <p>3. The Ise Shrine has:</p>
+      <label><input type="radio" name="q3" value="changed" required> Changed</label>
+    </div>
+
+    <div class="question">
+      <p>4. The seasons have:</p>
+      <label><input type="radio" name="q4" value="changed" required> Changed</label>
+    </div>
+
+    <div class="question">
+      <p>5. The wildflowers have:</p>
+      <label><input type="radio" name="q5" value="changed" required> Changed</label>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('quizForm');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Check answers
+      const correctAnswers = {
+        q1: 'chemical-change',
+        q2: 'change',
+        q3: 'changed',
+        q4: 'changed',
+        q5: 'changed'
+      };
+
+      let allCorrect = true;
+      for (let question in correctAnswers) {
+        const selected = document.querySelector(`input[name="${question}"]:checked`);
+        if (!selected || selected.value !== correctAnswers[question]) {
+          allCorrect = false;
+          break;
+        }
+      }
+
+      if (allCorrect) {
+        alert('All correct! You may mass on to the next memory.');
+        window.location.href = 'winterjogger.html';
+      } else {
+        alert('Some answers are incorrect. Please try again.');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -12,10 +12,21 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            transition: background-color 0.3s ease;
         }
 
         body.hover-active {
             background-image: url('music2jogger2.png');
+        }
+
+        body.flashing {
+            animation: redFlash 0.5s infinite;
+            background-image: none !important;
+        }
+
+        @keyframes redFlash {
+            0%, 100% { background-color: rgba(255, 0, 0, 0); }
+            50% { background-color: rgba(255, 0, 0, 0.8); }
         }
 
         #backgroundGif {
@@ -49,6 +60,30 @@
         #notification:hover {
             background-color: #2196F3;
         }
+
+        #warning {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            padding: 30px;
+            background-color: #2196F3;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 200;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            display: none;
+            animation: warningFlash 0.5s infinite;
+        }
+
+        @keyframes warningFlash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
     </style>
 </head>
 <body>
@@ -56,22 +91,39 @@
         Memory Located
     </div>
 
+    <div id="warning">
+        Warning: Rainy days ahead. Proceed with caution.
+    </div>
+
     <script>
         const notification = document.getElementById('notification');
+        const warning = document.getElementById('warning');
         const body = document.body;
 
-        // Show notification after 4 seconds
+        // Show notification after 1 second
         setTimeout(function() {
             notification.style.display = 'block';
-        }, 4000);
+        }, 1000);
 
-       notification.addEventListener('click', function() {
-
-             setTimeout(function() {
-        window.location.href = 'music2.html';
-    }, 3000);
+        notification.addEventListener('click', function() {
+            // Hide notification
+            notification.style.display = 'none';
             
+            // Remove background image
+            body.style.backgroundImage = 'none';
+            
+            // Start red flashing background
+            body.classList.add('flashing');
+            
+            // Show warning message
+            warning.style.display = 'block';
+            
+            // Redirect after 3 seconds
+            setTimeout(function() {
+                window.location.href = 'music2.html';
+            }, 3000);
         });
+
         // Change background when hovering over notification
         notification.addEventListener('mouseenter', function() {
             body.classList.add('hover-active');

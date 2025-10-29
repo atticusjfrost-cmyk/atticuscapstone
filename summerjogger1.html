@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Memory Questionnaire</title>
+  <title>Memory Survey</title>
   <style>
     body {
       font-family: sans-serif;
@@ -25,7 +25,22 @@
     .glitch {
       color: red;
       font-style: italic;
-      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-3px, 2px); }
+      20% { transform: translate(3px, -2px); }
+      30% { transform: translate(-2px, 3px); }
+      40% { transform: translate(2px, -3px); }
+      50% { transform: translate(-3px, -2px); }
+      60% { transform: translate(3px, 2px); }
+      70% { transform: translate(-2px, -3px); }
+      80% { transform: translate(2px, 3px); }
+      90% { transform: translate(-3px, 2px); }
+    }
+    .shaking {
+      animation: shake 0.4s ease-in-out;
     }
     #calculating {
       display: none;
@@ -51,8 +66,13 @@
 
   <h1>Memory Determination Questionnaire</h1>
 
+  <div id="intro" class="question active">
+    <p><strong>Please conduct a quick survey.</strong></p>
+    <button type="button" onclick="startSurvey()">Begin</button>
+  </div>
+
   <form id="quizForm" onsubmit="handleSubmit(event)">
-    <div class="question active" id="q1">
+    <div class="question" id="q1">
       <p><strong>If you could be a shape, what would it be?</strong></p>
       <label><input type="radio" name="shape" value="Square"> Square</label><br>
       <label><input type="radio" name="shape" value="Circle"> Circle</label><br>
@@ -73,15 +93,24 @@
       <label><input type="radio" name="temple" value="Changed">
         <span id="glitchText" class="glitch">It has changed</span>
       </label><br>
-      <label><input type="radio" name="temple" value="Same"> It hasn’t changed</label><br><br>
+      <label><input type="radio" name="temple" value="Same"> It hasn't changed</label><br><br>
       <button type="submit">Submit</button>
     </div>
   </form>
 
-  <div id="calculating">Calculating...</div>
+  <div id="calculating">Thank you for conducting the survey. Your memory will be ready shortly.</div>
+  <div id="thankyou" style="display: none; font-size: 20px; text-align: center; margin-top: 50px;">
+    Thank you for conducting this survey.
+  </div>
 
   <script>
-    let current = 1;
+    let current = 0;
+
+    function startSurvey() {
+      document.getElementById('intro').classList.remove('active');
+      current = 1;
+      document.getElementById('q1').classList.add('active');
+    }
 
     function nextQuestion() {
       document.getElementById(`q${current}`).classList.remove('active');
@@ -90,12 +119,29 @@
       if (next) {
         next.classList.add('active');
         if (current === 3) {
-          setTimeout(() => {
-            const glitch = document.getElementById('glitchText');
-            glitch.textContent = 'It hasn’t changed';
-            glitch.style.color = 'black';
-            glitch.style.fontStyle = 'normal';
-          }, 1500);
+          const glitch = document.getElementById('glitchText');
+          const texts = ['It has changed', 'It hasn\'t changed'];
+          let glitchCount = 0;
+          
+          const doGlitch = () => {
+            if (glitchCount >= 7) {
+              glitch.style.color = 'black';
+              glitch.style.fontStyle = 'normal';
+              return;
+            }
+            
+            glitch.classList.add('shaking');
+            
+            setTimeout(() => {
+              glitch.classList.remove('shaking');
+              glitchCount++;
+              glitch.textContent = texts[glitchCount % 2];
+              
+              setTimeout(doGlitch, 600);
+            }, 400);
+          };
+          
+          setTimeout(doGlitch, 800);
         }
       }
     }
@@ -106,7 +152,7 @@
       document.getElementById('calculating').style.display = 'block';
       setTimeout(() => {
         window.location.href = 'summerjogger.html';
-      }, 1500);
+      }, 2500);
     }
   </script>
 

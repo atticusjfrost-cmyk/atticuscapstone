@@ -12,6 +12,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="15" cy="15" r="12" fill="none" stroke="black" stroke-width="2"/><line x1="24" y1="24" x2="35" y2="35" stroke="black" stroke-width="2"/><circle cx="15" cy="15" r="10" fill="rgba(255,255,255,0.3)"/></svg>'), auto;
         }
 
         body.hover-active {
@@ -28,30 +29,53 @@
             z-index: 1;
         }
 
+        #instructions {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgb(0, 0, 0);
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            text-align: center;
+            z-index: 50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
         #notification {
             position: fixed;
             top: 20px;
-            right: 20px;
-            width: 200px;
+            right: 400px;
+            width: 500px;
             padding: 15px;
-            background-color: #4CAF50;
-            color: white;
+            background-color: transparent;
+            color: transparent;
             border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="15" cy="15" r="12" fill="none" stroke="black" stroke-width="2"/><line x1="24" y1="24" x2="35" y2="35" stroke="black" stroke-width="2"/><circle cx="15" cy="15" r="10" fill="rgba(255,255,255,0.3)"/></svg>'), auto;
             z-index: 100;
             text-align: center;
             font-family: Arial, sans-serif;
             font-size: 14px;
             display: none;
+            transition: all 0.3s ease;
         }
 
-        #notification:hover {
-            background-color: #2196F3;
+        #notification.found {
+            background-color: #4caf4f00;
+            color: rgba(255, 255, 255, 0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #notification.found:hover {
+            background-color: #2195f300;
         }
     </style>
 </head>
 <body>
+    <div id="instructions">
+        Time to do some searching. Find the memory you are after...
+    </div>
+
     <div id="notification">
         Memory Located
     </div>
@@ -60,22 +84,14 @@
         const notification = document.getElementById('notification');
         const body = document.body;
 
-        // Show notification after 4 seconds
+        // Show notification after 4 seconds (still invisible)
         setTimeout(function() {
             notification.style.display = 'block';
-        }, 4000);
+        }, 200);
 
-        notification.addEventListener('click', function() {
-
-             setTimeout(function() {
-        window.location.href = 'road.html';
-    }, 3000);
-            
-        });
-        
-
-        // Change background when hovering over notification
+        // Reveal notification when hovering over it
         notification.addEventListener('mouseenter', function() {
+            notification.classList.add('found');
             body.classList.add('hover-active');
         });
 
@@ -83,9 +99,15 @@
             body.classList.remove('hover-active');
         });
 
+        notification.addEventListener('click', function() {
+            setTimeout(function() {
+                window.location.href = 'road.html';
+            }, 200);
+        });
+
         // Change notification position here:
-        notification.style.top = '580px';
-        notification.style.right = '600px';
+        notification.style.top = '820px';
+        notification.style.right = '830px';
     </script>
 </body>
 </html>

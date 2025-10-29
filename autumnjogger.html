@@ -28,6 +28,39 @@
             z-index: 1;
         }
 
+        #dialogue {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            display: block;
+        }
+
+        #dialogue button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #dialogue button:hover {
+            background-color: #45a049;
+        }
+
         #notification {
             position: fixed;
             top: 20px;
@@ -52,27 +85,36 @@
     </style>
 </head>
 <body>
+    <div id="dialogue">
+        <p>A wave washes over you. A passage too.</p>
+        <button onclick="closeDialogue()">Continue</button>
+    </div>
+
     <div id="notification">
         Memory Located
     </div>
 
     <script>
         const notification = document.getElementById('notification');
+        const dialogue = document.getElementById('dialogue');
         const body = document.body;
 
-        // Show notification after 4 seconds
-        setTimeout(function() {
+        function closeDialogue() {
+            // Hide dialogue
+            dialogue.style.display = 'none';
+            
+            // Change background to autumnjogger2.png
+            body.style.backgroundImage = "url('autumnjogger2.png')";
+            
+            // Show memory button
             notification.style.display = 'block';
-        }, 4000);
+        }
 
         notification.addEventListener('click', function() {
-
-             setTimeout(function() {
-        window.location.href = 'autumn.html';
-    }, 3000);
-            
+            setTimeout(function() {
+                window.location.href = 'autumn.html';
+            }, 3000);
         });
-        
 
         // Change background when hovering over notification
         notification.addEventListener('mouseenter', function() {
