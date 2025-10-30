@@ -81,7 +81,15 @@
     <button type="submit">Submit</button>
   </form>
 
-  <script>
+   <script>
+    // Show dialog on page load
+    window.addEventListener('load', function() {
+      alert('To prove you are worthy of capable of accessing the next memory, please complete the following quiz.');
+    });
+
+    const form = document.getElementById('quizForm');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
     const form = document.getElementById('quizForm');
 
     form.addEventListener('submit', function(event) {
