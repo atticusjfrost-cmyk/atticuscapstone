@@ -49,49 +49,37 @@
   </style>
 </head>
 <body>
-
   <h1>Quiz</h1>
-
   <form id="quizForm">
     <div class="question">
       <p>1. What is the process wherein a chemical goes from one form to another known as?</p>
       <label><input type="radio" name="q1" value="chemical-change" required> Chemical change</label>
     </div>
-
     <div class="question">
       <p>2. To improve is to:</p>
       <label><input type="radio" name="q2" value="change" required> Change</label>
     </div>
-
     <div class="question">
       <p>3. The Ise Shrine has:</p>
       <label><input type="radio" name="q3" value="changed" required> Changed</label>
     </div>
-
     <div class="question">
       <p>4. The seasons have:</p>
       <label><input type="radio" name="q4" value="changed" required> Changed</label>
     </div>
-
     <div class="question">
       <p>5. The wildflowers have:</p>
       <label><input type="radio" name="q5" value="changed" required> Changed</label>
     </div>
-
     <button type="submit">Submit</button>
   </form>
-
-   <script>
+  <script>
     // Show dialog on page load
     window.addEventListener('load', function() {
       alert('To prove you are worthy of capable of accessing the next memory, please complete the following quiz.');
     });
 
     const form = document.getElementById('quizForm');
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-    const form = document.getElementById('quizForm');
-
     form.addEventListener('submit', function(event) {
       event.preventDefault();
       
@@ -103,7 +91,6 @@
         q4: 'changed',
         q5: 'changed'
       };
-
       let allCorrect = true;
       for (let question in correctAnswers) {
         const selected = document.querySelector(`input[name="${question}"]:checked`);
@@ -112,7 +99,6 @@
           break;
         }
       }
-
       if (allCorrect) {
         alert('All correct! You may pass on to the next memory.');
         window.location.href = 'winterjogger.html';
@@ -121,6 +107,5 @@
       }
     });
   </script>
-
 </body>
 </html>
