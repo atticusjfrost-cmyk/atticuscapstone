@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +10,6 @@
             padding: 0;
             overflow: hidden; /* Prevents scrollbars */
         }
-
         #backgroundGif {
             position: fixed;
             top: 50%;
@@ -22,7 +22,6 @@
             z-index: -1; /* Puts gif behind all content */
             object-fit: cover; /* Ensures gif covers the entire screen */
         }
-
         /* Style for any content you want on top of the gif */
         .content {
             position: relative;
@@ -31,7 +30,6 @@
             text-align: center;
             padding: 20px;
         }
-
         p {
             font-family: 'Times New Roman', Times, serif;
             font-size: 30px;
@@ -39,20 +37,26 @@
             -webkit-text-stroke: 0.05px black;
             text-align: center;
         }
-
         h1 {
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             font-style: bold;
             font-size: 50px;
             color: black;
         }
+        button {
+            position: relative;
+            z-index: 1;
+            margin: 20px auto;
+            display: block;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-
     <!-- Background GIF -->
     <img id="backgroundGif" src="wildflowerwllpaper.gif" alt="Background">
-
     <!-- Your page content goes here -->
     <div class="content">
         <h1>SPRING MEMORIES</h1>
@@ -61,15 +65,15 @@
             The sun rises up from the hills and I walk across the wildflower fields. 
         </p>
         <p>They are tall and broad and reach up to the sky. Pink and purple stain my hands.</p>
-        <p>I come here every spring. Every spring the flowers are in bloom and every spring I’ve
-been asked how I changed, but I say them I’m just a singular road.</p>
+        <p>I come here every spring. Every spring the flowers are in bloom and every spring I've
+been asked how I changed, but I say them I'm just a singular road.</p>
         <p>Parmenides said that nothing can come from nothing. And, if nothing can come from
 nothing, then nothing begins and nothing ends. All is one, unchanging, being. The
 flowers bloom here each year; in the light that falls unchanged.
         </p>
         <p>There is a slight humming amongst it all. It tugs at me and I am pulled away.</p>
     </div>
-
+    
+    <button onclick="window.location.href='music1jogger.html';">Next</button>
 </body>
-<button onclick="window.location.href='music1jogger.html';">Go to Next Page</button>
 </html>
