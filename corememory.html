@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,6 +6,32 @@
     <title>Document</title>
 </head>
 <body>
+
+        <source src="sound.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     
+    <script>
+        // Fallback for browsers that block autoplay
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('bgMusic');
+            
+            // Try to play
+            var playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function(error) {
+                    // Autoplay was prevented
+                    // Show a button or message to user to click to start audio
+                    console.log("Autoplay prevented. User interaction needed.");
+                    
+                    // Auto-play on first user interaction
+                    document.body.addEventListener('click', function() {
+                        audio.play();
+                    }, { once: true });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
