@@ -4,34 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            font-family: Arial, sans-serif;
+        }
+        
+        .prompt-container {
+            text-align: center;
+            color: #fff;
+        }
+        
+        .prompt-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .yes-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .yes-button:hover {
+            background-color: #45a049;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <audio id="bgMusic" autoplay loop>
+    <div id="promptContainer" class="prompt-container">
+        <h2>Load CoreMemory?</h2>
+        <button class="yes-button" onclick="loadMemory()">Yes</button>
+    </div>
+    
+    <audio id="bgMusic" loop>
         <source src="sound.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
     
     <script>
-        // Fallback for browsers that block autoplay
-        document.addEventListener('DOMContentLoaded', function() {
+        function loadMemory() {
             var audio = document.getElementById('bgMusic');
+            var promptContainer = document.getElementById('promptContainer');
             
-            // Try to play
-            var playPromise = audio.play();
+            // Hide the prompt
+            promptContainer.classList.add('hidden');
             
-            if (playPromise !== undefined) {
-                playPromise.catch(function(error) {
-                    // Autoplay was prevented
-                    // Show a button or message to user to click to start audio
-                    console.log("Autoplay prevented. User interaction needed.");
-                    
-                    // Auto-play on first user interaction
-                    document.body.addEventListener('click', function() {
-                        audio.play();
-                    }, { once: true });
-                });
-            }
-        });
+            // Play the audio
+            audio.play();
+        }
     </script>
 </body>
 </html>
