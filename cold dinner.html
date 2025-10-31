@@ -11,6 +11,15 @@
             padding: 20px;
             max-width: 800px;
             margin: 0 auto;
+            background-image: url('large_thumbail.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: background-image 0.5s ease-in-out;
+        }
+        
+        body.night-kitchen {
+            background-image: url('kitchnnight.jpg');
         }
         
         .preserve-spaces {
@@ -89,14 +98,14 @@
     
     <p>
         <span class="sticky-note-container" onclick="openStickyNote()">
-            <img src="stickynote.jpg" alt="Sticky Note" class="sticky-note-small">
+            <img src="stickynote.png" alt="Sticky Note" class="sticky-note-small">
         </span>
     </p>
     
     <div id="overlay" class="overlay" onclick="closeStickyNote()">
         <div style="position: relative;">
             <button class="close-btn" onclick="closeStickyNote()">×</button>
-            <img src="stickynote.jpg" alt="Sticky Note Expanded" class="sticky-note-large">
+            <img src="stickynote.png" alt="Sticky Note Expanded" class="sticky-note-large">
         </div>
     </div>
     
@@ -128,6 +137,7 @@
         
         function closeStickyNote() {
             document.getElementById('overlay').classList.remove('active');
+            document.body.classList.add('night-kitchen');
         }
     </script>
 </body>
