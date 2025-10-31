@@ -1,26 +1,134 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .preserve-spaces {
+            white-space: pre-wrap;
+        }
+        
+        .sticky-note-container {
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .sticky-note-small {
+            width: 100px;
+            height: auto;
+            transition: transform 0.2s;
+        }
+        
+        .sticky-note-small:hover {
+            transform: scale(1.1);
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .overlay.active {
+            display: flex;
+        }
+        
+        .sticky-note-large {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: white;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .close-btn:hover {
+            background: #f0f0f0;
+        }
+        
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <p>I come home upon the tails of a setting sun and on my kitchen-bench is my cold dinner. A sticky note beside it. </p>
-       <p> OPEN STICKY NOTE </p>
-        <p> Did that note take the light with it? It's all gone blue now. Colbalt blue by virtue of the blinds, or the curtains, or that sticky note. I can hear it outside. It is beginning to come on to rain. 
-       <p> I place my cold dinner in the microwave for 3 minutes and 40 seconds. I cut my meal up and I place it on my tongue. It sits, heavy and sad, on my mouth and on my heart. Oh lord, here it comes. The familiar smells and flavours. </p>
-      <p>  It was sunny and now its raining. </p>
-       <p> I go outside. Why? My brain, my legs, or that sticky note.</p>
-      <p>  It's not light rain. First it was light rain, but now it's heavy rain. It goes all over my face like a baptism. </p>
-
-       <p> From a distance, it might look like I'm crying.</p>
-       <p> Don't believe it.</p>
-      <p>  Don't     </p> <p> believe            </p><p> it.</p>
-     <p>   Do                        n't
-          <p>              believe it.</p>
+    <p>I come home upon the tails of a setting sun and on my kitchen-bench is my cold dinner. A sticky note beside it.</p>
     
-
-</p>
+    <p>
+        <span class="sticky-note-container" onclick="openStickyNote()">
+            <img src="stickynote.png" alt="Sticky Note" class="sticky-note-small">
+        </span>
+    </p>
+    
+    <div id="overlay" class="overlay" onclick="closeStickyNote()">
+        <div style="position: relative;">
+            <button class="close-btn" onclick="closeStickyNote()">×</button>
+            <img src="stickynote.png" alt="Sticky Note Expanded" class="sticky-note-large">
+        </div>
+    </div>
+    
+    <p>Did that note take the light with it? It's all gone blue now. Colbalt blue by virtue of the blinds, or the curtains, or that sticky note. I can hear it outside. It is beginning to come on to rain.</p>
+    
+    <p>I place my cold dinner in the microwave for 3 minutes and 40 seconds. I cut my meal up and I place it on my tongue. It sits, heavy and sad, on my mouth and on my heart. Oh lord, here it comes. The familiar smells and flavours.</p>
+    
+    <p>It was sunny and now its raining.</p>
+    
+    <p>I go outside. Why? My brain, my legs, or that sticky note.</p>
+    
+    <p>It's not light rain. First it was light rain, but now it's heavy rain. It goes all over my face like a baptism.</p>
+    
+    <p>From a distance, it might look like I'm crying.</p>
+    
+    <p>Don't believe it.</p>
+    
+    <p class="preserve-spaces">Don't     believe            it.</p>
+    
+    <p class="preserve-spaces">Do                        n't
+         believe it.</p>
+    
+    <button onclick="window.location.href='winterjogger1.html';">Next</button>
+    
+    <script>
+        function openStickyNote() {
+            document.getElementById('overlay').classList.add('active');
+        }
+        
+        function closeStickyNote() {
+            document.getElementById('overlay').classList.remove('active');
+        }
+    </script>
 </body>
-<button onclick="window.location.href='winterjogger1.html';">Next</button>
 </html>
