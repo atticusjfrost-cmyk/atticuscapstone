@@ -44,12 +44,43 @@
         .hidden {
             display: none;
         }
+        
+        .text-container {
+            text-align: center;
+            color: #fff;
+            max-width: 600px;
+            padding: 20px;
+        }
+        
+        .text-line {
+            opacity: 0;
+            font-size: 20px;
+            margin: 15px 0;
+            transition: opacity 1s ease-in;
+        }
+        
+        .text-line.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
     <div id="promptContainer" class="prompt-container">
         <h2>Load CoreMemory?</h2>
         <button class="yes-button" onclick="loadMemory()">Yes</button>
+    </div>
+    
+    <div id="textContainer" class="text-container hidden">
+        <p class="text-line" id="line1">It is very complete and perfect. Everything is new again.</p>
+        <p class="text-line" id="line2">There is a large splodge of sun and...</p>
+        <p class="text-line" id="line3">and crowned by the sun are my parents....</p>
+        <p class="text-line" id="line4">and I am with them and I am small...</p>
+        <p class="text-line" id="line5">but they are holding my hand...</p>
+        <br>
+        <p class="text-line" id="line6">something is in my chest</p>
+        <p class="text-line" id="line7">something is in my heart</p>
+        <p class="text-line" id="line8">I feel the whirling of a gentle machine</p>
+        <p class="text-line" id="line9">I feel the gears of my heart change all over again</p>
     </div>
     
     <audio id="bgMusic" loop>
@@ -61,12 +92,27 @@
         function loadMemory() {
             var audio = document.getElementById('bgMusic');
             var promptContainer = document.getElementById('promptContainer');
+            var textContainer = document.getElementById('textContainer');
             
             // Hide the prompt
             promptContainer.classList.add('hidden');
             
+            // Show text container
+            textContainer.classList.remove('hidden');
+            
             // Play the audio
             audio.play();
+            
+            // Show lines with timing (adjust these numbers to match your music)
+            setTimeout(() => document.getElementById('line1').classList.add('show'), 500);
+            setTimeout(() => document.getElementById('line2').classList.add('show'), 3500);
+            setTimeout(() => document.getElementById('line3').classList.add('show'), 6500);
+            setTimeout(() => document.getElementById('line4').classList.add('show'), 9500);
+            setTimeout(() => document.getElementById('line5').classList.add('show'), 12500);
+            setTimeout(() => document.getElementById('line6').classList.add('show'), 16000);
+            setTimeout(() => document.getElementById('line7').classList.add('show'), 18500);
+            setTimeout(() => document.getElementById('line8').classList.add('show'), 21000);
+            setTimeout(() => document.getElementById('line9').classList.add('show'), 24000);
         }
     </script>
 </body>
