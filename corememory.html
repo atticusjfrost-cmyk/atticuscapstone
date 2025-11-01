@@ -77,10 +77,15 @@
         <p class="text-line" id="line4">and I am with them and I am small...</p>
         <p class="text-line" id="line5">but they are holding my hand...</p>
         <br>
-        <p class="text-line" id="line6">something is in my chest</p>
-        <p class="text-line" id="line7">something is in my heart</p>
-        <p class="text-line" id="line8">I feel the whirling of a gentle machine</p>
-        <p class="text-line" id="line9">I feel the gears of my heart change all over again</p>
+        <p class="text-line" id="line6">It…</p>
+        <p class="text-line" id="line7">It is not how I thought it was…</p>
+        <p class="text-line" id="line8">It has changed…</p>
+        <p class="text-line" id="line9">But that's ok…</p>
+        <br>
+        <p class="text-line" id="line10">something is in my chest</p>
+        <p class="text-line" id="line11">something is in my heart</p>
+        <p class="text-line" id="line12">I feel the whirling of a gentle machine</p>
+        <p class="text-line" id="line13">I feel the gears of my heart change all over again</p>
     </div>
     
     <audio id="bgMusic" loop>
@@ -103,16 +108,20 @@
             // Play the audio
             audio.play();
             
-            // Show lines with timing (spaced to end at 31.20 seconds)
+            // Show lines with even timing (13 lines over 31.2 seconds = ~2.4s intervals)
             setTimeout(() => document.getElementById('line1').classList.add('show'), 500);
-            setTimeout(() => document.getElementById('line2').classList.add('show'), 4000);
-            setTimeout(() => document.getElementById('line3').classList.add('show'), 8000);
-            setTimeout(() => document.getElementById('line4').classList.add('show'), 12000);
-            setTimeout(() => document.getElementById('line5').classList.add('show'), 16000);
-            setTimeout(() => document.getElementById('line6').classList.add('show'), 20000);
-            setTimeout(() => document.getElementById('line7').classList.add('show'), 23500);
-            setTimeout(() => document.getElementById('line8').classList.add('show'), 27000);
-            setTimeout(() => document.getElementById('line9').classList.add('show'), 31200);
+            setTimeout(() => document.getElementById('line2').classList.add('show'), 3000);
+            setTimeout(() => document.getElementById('line3').classList.add('show'), 5500);
+            setTimeout(() => document.getElementById('line4').classList.add('show'), 8000);
+            setTimeout(() => document.getElementById('line5').classList.add('show'), 10500);
+            setTimeout(() => document.getElementById('line6').classList.add('show'), 13000);
+            setTimeout(() => document.getElementById('line7').classList.add('show'), 15500);
+            setTimeout(() => document.getElementById('line8').classList.add('show'), 18000);
+            setTimeout(() => document.getElementById('line9').classList.add('show'), 20500);
+            setTimeout(() => document.getElementById('line10').classList.add('show'), 23000);
+            setTimeout(() => document.getElementById('line11').classList.add('show'), 25500);
+            setTimeout(() => document.getElementById('line12').classList.add('show'), 28000);
+            setTimeout(() => document.getElementById('line13').classList.add('show'), 31200);
         }
     </script>
 </body>
