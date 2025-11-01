@@ -72,17 +72,23 @@
             display: flex;
         }
         
-      .sticky-note-large {
+        .sticky-note-large {
             max-width: 30%;
             max-height: 30%;
+            display: block;
+        }
+        
+        .sticky-note-wrapper {
             position: relative;
+            display: inline-block;
         }
         
         .close-btn {
             position: absolute;
-            top: -40px;
-            right: 0;
-            background: white;
+            top: 0;
+            right: -45px;
+            background: #ff0000;
+            color: white;
             border: none;
             font-size: 30px;
             cursor: pointer;
@@ -96,7 +102,7 @@
         }
         
         .close-btn:hover {
-            background: #f0f0f0;
+            background: #cc0000;
         }
         
         button {
@@ -117,13 +123,14 @@
     </p>
     
     <div id="overlay" class="overlay" onclick="closeStickyNote()">
-        <div style="position: relative;">
-            <button class="close-btn" onclick="closeStickyNote()">×</button>
+        <div class="sticky-note-wrapper" onclick="event.stopPropagation()">
             <img src="stickynote.jpg" alt="Sticky Note Expanded" class="sticky-note-large">
+            <button class="close-btn" onclick="closeStickyNote()">×</button>
         </div>
     </div>
     
-    <p>Did that note take the light with it? It's all gone blue now. Colbalt blue by virtue of the blinds, or the curtains, or that sticky note. I can hear it outside. It is beginning to come on to rain.</p>
+    <p>Did that note take the light with it? It's all gone blue now. Colbalt blue by virtue of the blinds, or the curtains, or that sticky note. </p>
+    <p> </p>I can hear it outside. It is beginning to come on to rain.</p>
     
     <p>I place my cold dinner in the microwave for 3 minutes and 40 seconds. I cut my meal up and I place it on my tongue. It sits, heavy and sad, on my mouth and on my heart. Oh lord, here it comes. The familiar smells and flavours.</p>
     
