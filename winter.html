@@ -17,6 +17,7 @@
             font-style: bold;
             font-size: 50px;
             color: black;
+            text-align: center;
         }
    body {
   margin: 0;
@@ -34,9 +35,18 @@
      1px -1px 0 white,
     -1px  1px 0 white,
      1px  1px 0 white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
-
-
+    
+    .content-wrapper {
+      max-width: 800px;
+      width: 100%;
+    }
+    
     button {
             position: relative;
             z-index: 1;
@@ -46,13 +56,13 @@
             font-size: 18px;
             cursor: pointer;
         }
-
     button:hover {
       background-color: rgba(50, 50, 50, 0.9);
     }
   </style>
 </head>
 <body>
+  <div class="content-wrapper">
    <h1>WINTER MEMORIES</h1>
   <p>
     It is now winter and snow fills the fields. The cold how long frozen the morning dew
@@ -62,11 +72,10 @@ corner of this memory-hard drive. There they are bright as I remember. I can pic
 them. Even then though, it is only partial. The impression of a ghost.
 I look down and see my hands are still stained. Pink and purple. Yellow and white.
 The snow too, is stained, creating forked paths which seem to travel on further than
-the horizon. More than that, they’ve stained my head and they’ve stained my mind
-and they’ve stained my heart.
-
+the horizon. More than that, they've stained my head and they've stained my mind
+and they've stained my heart.
   </p>
-
   <button onclick="window.location.href='corememory.html';">take me to my core memory</button>
+  </div>
 </body>
 </html>
