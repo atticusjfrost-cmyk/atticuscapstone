@@ -137,7 +137,7 @@ The sun is big and mean, and it streams on down through the sheets that have bee
 hung to dry, creating a soft white glow if one were to stand behind it.
 I lift a heavy board of wood up to my door frame and rest it on the doorways
 threshold. My eyes peer upwards.
-This won’t fit; I tell myself.`;
+This won't fit; I tell myself.`;
 
     const SPEED = 50;
     const words = text.split(/(\s+)/);
@@ -178,33 +178,28 @@ This won’t fit; I tell myself.`;
       }, 500);
 
       // Start dialogue sequence
-    
       setTimeout(() => {
-  dramaticText.style.display = 'none';
-  showDialogue("It’s just a matter of paying attention.", "white");
-}, 2000);
-setTimeout(() => showDialogue("It’s just a matter of paying attention.", "red"), 4000);
-      setTimeout(() => showDialogue("What?", "red"), 4000);
-      setTimeout(() => showDialogue("It’s just a matter of paying attention.", "white"), 6000);
-      setTimeout(() => showDialogue("I have been. The memory file must be wrong. None of these are how it happened.", "red"), 8000);
-setTimeout(() => showDialogue("You just aren’t paying enough attention.", "white"), 6000);
-setTimeout(() => showDialogue("...to what?", "red"), 14000);
-      setTimeout(() => showDialogue("To the parts that don't fit.", "white"), 17000);
- setTimeout(() => showDialogue("The text you picked as your jogger for your memories, what was it?", "white"), 19000);
-      setTimeout(() => showDialogue("'The Tempest'.", "red"), 4000);
-       setTimeout(() => showDialogue("and why did you pick 'The Tempest'? ", "white"), 6000);
-       setTimeout(() => showDialogue("I... I'm not sure.", "red"), 4500);
-       setTimeout(() => showDialogue("I know why.", "white"), 4000);
-      setTimeout(() => showDialogue("You needed a story about change:", "white"), 5000);
-      setTimeout(() => showDialogue("Where an old and bitter king could forgive his enemies,", "white"), 19000);
-      setTimeout(() => showDialogue("where a wizard could break his staff and drown his books and leave his island.", "white"), 19000);
-      setTimeout(() => showDialogue("You needed a story where the illusion would run dry and all that’s left to do is change.", "white"), 19000);
+        dramaticText.style.display = 'none';
+        showDialogue("It's just a matter of paying attention.", "white");
+      }, 2000);
       
-      setTimeout(() => showDialogue("Because change is a horse we all must ride.", "white"), 20000);
-      setTimeout(() => showDialogue("Oh... OK.", "red"), 23000);
+      setTimeout(() => showDialogue("What?", "red"), 4000);
+      setTimeout(() => showDialogue("It's just a matter of paying attention.", "white"), 6000);
+      setTimeout(() => showDialogue("I have been. The memory file must be wrong. None of these are how it happened.", "red"), 8000);
+      setTimeout(() => showDialogue("You just aren't paying enough attention.", "white"), 11000);
+      setTimeout(() => showDialogue("...to what?", "red"), 14000);
+      setTimeout(() => showDialogue("To the parts that don't fit.", "white"), 17000);
+      setTimeout(() => showDialogue("The text you picked as your jogger for your memories, what was it?", "red"), 20000);
+      setTimeout(() => showDialogue("The Tempest.", "white"), 23000);
+      setTimeout(() => showDialogue("And why did you pick The Tempest?", "red"), 26000);
+      setTimeout(() => showDialogue("I'm… not sure.", "white"), 29000);
+      setTimeout(() => showDialogue("I know why. You see, you need a story about change. Where an old and bitter king could forgive his enemies, where a wizard could break his staff and drown his books and leave his island. You needed a story where the illusion would run dry and all that's left to do is change.", "white"), 32000);
+      setTimeout(() => showDialogue("Change is a horse we all must ride.", "white"), 45000);
+      setTimeout(() => showDialogue("Oh... OK.", "red"), 48000);
+      
       setTimeout(() => {
-  window.location.href = 'autumnjogger.html';
-}, 27000); // 23000 + 4000ms pause
+        window.location.href = 'autumnjogger.html';
+      }, 52000);
     });
 
     function showDialogue(text, color) {
