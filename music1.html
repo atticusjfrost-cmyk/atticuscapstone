@@ -165,15 +165,14 @@ button.addEventListener('click', () => {
 });
 
 document.body.appendChild(button);
-
 const video = document.getElementById('mainVideo');
 video.addEventListener('ended', () => {
     if (document.fullscreenElement) {
         document.exitFullscreen();
     }
     setTimeout(() => {
-        button.style.display = 'block';
-    }, 3000);
+        window.location.href = 'roadjogger.html';
+    }, 2000);
 });
         
     </script>
