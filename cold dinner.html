@@ -154,7 +154,11 @@
     
     <button onclick="window.location.href='winterjogger1.html';">i don't want to be here any longer</button>
     
+    <audio id="rainSound" src="rain.mp3" loop></audio>
+    
     <script>
+        const rainSound = document.getElementById('rainSound');
+        
         function openStickyNote() {
             document.getElementById('overlay').classList.add('active');
         }
@@ -162,6 +166,10 @@
         function closeStickyNote() {
             document.getElementById('overlay').classList.remove('active');
             document.body.classList.add('night-kitchen');
+            
+            setTimeout(() => {
+                rainSound.play();
+            }, 6300);
         }
     </script>
 </body>
