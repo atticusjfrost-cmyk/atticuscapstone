@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attention</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        #display {
+            min-height: 300px;
+            padding: 30px;
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            font-size: 18px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        #nextButton {
+            display: none;
+            margin: 30px auto;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #nextButton:hover {
+            background-color: #357abd;
+        }
+
+        #nextButton.show {
+            display: block;
+        }
+
+        .flash {
+            animation: flashRed 0.5s;
+        }
+
+        @keyframes flashRed {
+            0%, 100% { background-color: #1a1a1a; }
+            50% { background-color: #ff000000; }
+        }
+
+        #errorImage {
+            display: none;
+            position: fixed;
+            top: 53%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            z-index: 1000;
+        }
+
+        #errorImage.show {
+            display: block;
+        }
+
+        #extraButton {
+            display: none;
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 40px;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            background-color: #e94e7700;
+            color: rgba(255, 255, 255, 0);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1001;
+        }
+
+        #extraButton:hover {
+            background-color: #c43c6000;
+        }
+    </style>
+</head>
+<body>
+    <div id="display"></div>
+    <button id="nextButton">Next Memory</button>
+    <img id="errorImage" src="newerrorbow.png" alt="Error">
+    <button id="extraButton">Continue</button>
+    <audio id="errorSound" src="errorbox.mp3"></audio>
+
+    <script>
+        const text = `EXT. HOUSE - DAY 
+We see ME, dressed in old and dirtied clothes. Pants are splattered with paint. It is silent and bright out. Facing a doorframe. ME looks annoyed as ME lifts up a large, and presumably heavy, slab of wood. Holds the wood up to a doorframe. Face scrunches up.
+                                ME
+                        This won't fit!
+ME throws the plank down.`;
+
+        const SPEED = 50;
+        const words = text.split(/(\s+)/);
+        let currentIndex = 0;
+
+        const display = document.getElementById('display');
+        const nextButton = document.getElementById('nextButton');
+        const errorImage = document.getElementById('errorImage');
+        const errorSound = document.getElementById('errorSound');
+        const extraButton = document.getElementById('extraButton');
+
+        function displayNextWord() {
+            if (currentIndex < words.length) {
+                display.textContent += words[currentIndex];
+                currentIndex++;
+            } else {
+                clearInterval(intervalId);
+                nextButton.classList.add('show');
+            }
+        }
+
+        const intervalId = setInterval(displayNextWord, SPEED);
+
+        nextButton.addEventListener('click', () => {
+            document.body.classList.add('flash');
+
+            setTimeout(() => {
+                errorImage.classList.add('show');
+                errorSound.play();
+                extraButton.style.display = 'block';
+            }, 250);
+
+            setTimeout(() => {
+                document.body.classList.remove('flash');
+            }, 500);
+        });
+
+        errorImage.addEventListener('click', () => {
+            errorSound.play();
+        });
+
+        extraButton.addEventListener('click', () => {
+            window.location.href = 'attention3.html';
+        });
+    </script>
+</body>
+</html>
