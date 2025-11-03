@@ -78,7 +78,7 @@
       transform: translate(-50%, -50%);
       font-size: 36px;
       font-weight: bold;
-      color: #880808;
+      color: #800020;
       text-align: center;
       z-index: 2000;
       animation: shake 0.5s infinite;
@@ -109,17 +109,15 @@
     .whiteText {
       color: white;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            font-style: bold;
-            font-size: 50px;
-
+      font-style: bold;
+      font-size: 50px;
     }
 
     .redText {
-      color: #880808;
+      color: #800020;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            font-style: bold;
-            font-size: 50px;
-
+      font-style: bold;
+      font-size: 50px;
     }
   </style>
 </head>
@@ -132,7 +130,12 @@
   <audio id="errorSound" src="errorbox.mp3"></audio>
 
   <script>
-    const text = `I stand outside in my hand-me-down clothes, paint splatters on my pants and shirt. The sun is big and mean, and it streams on down through the sheets that have been hung to dry, creating a soft white glow if one were to stand behind it.I lift a heavy board of wood up to my door frame and rest it on the threshold of the doorway. My eyes peer upwards. This won't fit; I tell myself.`;
+    const text = `I stand outside in my hand-me-down clothes, paint splatters on my pants and shirt.
+The sun is big and mean, and it streams on down through the sheets that have been
+hung to dry, creating a soft white glow if one were to stand behind it.
+I lift a heavy board of wood up to my door frame and rest it on the doorways
+threshold. My eyes peer upwards.
+This won't fit; I tell myself.`;
 
     const SPEED = 50;
     const words = text.split(/(\s+)/);
@@ -179,25 +182,25 @@
       }, 2000);
       
       setTimeout(() => showDialogue("What?", "red"), 4000);
-      setTimeout(() => showDialogue("It's just a matter of paying attention.", "white"), 6500);
-      setTimeout(() => showDialogue("I have been. The memory file must be wrong. None of these are how it happened.", "red"), 8000);
-      setTimeout(() => showDialogue("You just aren't paying enough attention.", "white"), 11000);
-      setTimeout(() => showDialogue("...to what?", "red"), 14000);
-      setTimeout(() => showDialogue("To the parts that don't fit.", "white"), 17000);
-      setTimeout(() => showDialogue("The text you picked as your jogger for your memories, what was it?", "white"), 20000);
-      setTimeout(() => showDialogue("The Tempest.", "red"), 23000);
-      setTimeout(() => showDialogue("And why did you pick The Tempest?", "white"), 26000);
-      setTimeout(() => showDialogue("I'm… not sure.", "red"), 30000);
-      setTimeout(() => showDialogue("I know why. You see, you need a story about change.", "white"), 32000);
-      setTimeout(() => showDialogue ("Where an old and bitter king could forgive his enemies,", "white"), 36500);
-      setTimeout(() => showDialogue ("where a wizard could break his staff and drown his books and leave his island.", "white"), 38500);
-      setTimeout(() => showDialogue ("You needed a story where the illusion would run dry and all that's left to do is change.", "white"), 40500);
-      setTimeout(() => showDialogue("Because change is a horse we all must ride.", "white"), 42500);
-      setTimeout(() => showDialogue("Oh... OK.", "red"), 45000);
+      setTimeout(() => showDialogue("It's just a matter of paying attention.", "white"), 5500);
+      setTimeout(() => showDialogue("I have been. The memory file must be wrong. None of these are how it happened.", "red"), 8500);
+      setTimeout(() => showDialogue("You just aren't paying enough attention.", "white"), 14000);
+      setTimeout(() => showDialogue("...to what?", "red"), 17500);
+      setTimeout(() => showDialogue("To the parts that don't fit.", "white"), 19500);
+      setTimeout(() => showDialogue("The text you picked as your jogger for your memories, what was it?", "white"), 22500);
+      setTimeout(() => showDialogue("The Tempest.", "red"), 28000);
+      setTimeout(() => showDialogue("And why did you pick The Tempest?", "white"), 30000);
+      setTimeout(() => showDialogue("I'm… not sure.", "red"), 33500);
+      setTimeout(() => showDialogue("I know why. You see, you need a story about change.", "white"), 36000);
+      setTimeout(() => showDialogue("Where an old and bitter king could forgive his enemies,", "white"), 40500);
+      setTimeout(() => showDialogue("where a wizard could break his staff and drown his books and leave his island.", "white"), 45000);
+      setTimeout(() => showDialogue("You needed a story where the illusion would run dry and all that's left to do is change.", "white"), 50500);
+      setTimeout(() => showDialogue("Because change is a horse we all must ride.", "white"), 56000);
+      setTimeout(() => showDialogue("Oh... OK.", "red"), 59500);
       
       setTimeout(() => {
         window.location.href = 'autumnjogger.html';
-      }, 52000);
+      }, 63000);
     });
 
     function showDialogue(text, color) {
