@@ -90,6 +90,7 @@
         <p class="text-line" id="line11">something is in my heart</p>
         <p class="text-line" id="line12">I feel the whirling of a gentle machine</p>
         <p class="text-line" id="line13">I feel the gears of my heart change all over again</p>
+        <p class="text-line" id="line13">End.</p>
     </div>
     
     <audio id="bgMusic">
@@ -126,6 +127,7 @@
             setTimeout(() => document.getElementById('line11').classList.add('show'), 25500);
             setTimeout(() => document.getElementById('line12').classList.add('show'), 28000);
             setTimeout(() => document.getElementById('line13').classList.add('show'), 31200);
+            setTimeout(() => document.getElementById('line14').classList.add('show'), 53250);
             
             // Hide lines at specified times
             // First 3 lines disappear at 43s
@@ -133,37 +135,37 @@
                 document.getElementById('line1').classList.add('hide');
                 document.getElementById('line2').classList.add('hide');
                 document.getElementById('line3').classList.add('hide');
-            }, 42250);
+            }, 43430);
             
             // Next 2 lines disappear at 44s
             setTimeout(() => {
                 document.getElementById('line4').classList.add('hide');
                 document.getElementById('line5').classList.add('hide');
-            }, 44100);
+            }, 44550);
             
             // Next 2 lines disappear at 46s
             setTimeout(() => {
                 document.getElementById('line6').classList.add('hide');
                 document.getElementById('line7').classList.add('hide');
-            }, 45300);
+            }, 45800);
             
             // Next line disappears at 47s
-            setTimeout(() => document.getElementById('line8').classList.add('hide'), 4650);
+            setTimeout(() => document.getElementById('line8').classList.add('hide'), 47000);
             
             // Next line disappears at 48s
-            setTimeout(() => document.getElementById('line9').classList.add('hide'), 47500);
+            setTimeout(() => document.getElementById('line9').classList.add('hide'), 48500);
             
             // Next line disappears at 49s
-            setTimeout(() => document.getElementById('line10').classList.add('hide'), 4870);
+            setTimeout(() => document.getElementById('line10').classList.add('hide'), 4950);
             
             // Next line disappears at 50s
-            setTimeout(() => document.getElementById('line11').classList.add('hide'), 50200);
+            setTimeout(() => document.getElementById('line11').classList.add('hide'), 50900);
             
             // Next line disappears at 51s
-            setTimeout(() => document.getElementById('line12').classList.add('hide'), 53350);
+            setTimeout(() => document.getElementById('line12').classList.add('hide'), 52160);
             
             // Final line disappears at 53s
-            setTimeout(() => document.getElementById('line13').classList.add('hide'), 53350);
+            setTimeout(() => document.getElementById('line13').classList.add('hide'), 52160);
         }
     </script>
 </body>
